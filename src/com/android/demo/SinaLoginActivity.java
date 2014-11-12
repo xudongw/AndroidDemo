@@ -16,8 +16,12 @@ public class SinaLoginActivity extends Activity{
 			
 			@Override
 			public void onClick(View arg0) {
-				
+				sina();
 			}
 		});
+	}
+	
+	public void sina(){
+		
 	}
 }
