@@ -1,12 +1,15 @@
 package com.android.demo.fragment;
 
-import com.android.demo.R;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.android.demo.R;
+import com.android.demo.utils.Logutils;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 
 public class MyFragment extends Fragment{
 	
@@ -36,6 +39,33 @@ public class MyFragment extends Fragment{
 	
 	private void initData(){
 		System.out.println(TAG + " initData");
+		doNetworkForData();
 		init = false;
 	}
+	
+	private void doNetworkForData(){
+		AsyncHttpClient client = new AsyncHttpClient();
+		client.setTimeout(10000);
+		client.get("http://www.baidu.com", new TestAsyncResponse());
+	}
+	
+	class TestAsyncResponse extends AsyncHttpResponseHandler{
+		
+		@Override
+		public void onSuccess(int arg0, String arg1) {
+			Logutils.logi(TAG, arg1);
+		}
+		
+		@Override
+		public void onFailure(Throwable arg0, String arg1) {
+			Logutils.loge(TAG, arg1);
+		}
+		
+		@Override
+		public void onFinish() {
+			super.onFinish();
+			Logutils.logi(TAG, "onFinish");
+		}
+	}
+
 }

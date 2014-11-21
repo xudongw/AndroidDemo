@@ -13,7 +13,7 @@
         android:icon="@drawable/ic_launcher"
         >
         <activity
-            android:name="com.android.demo.VoiceActivity"
+            android:name="com.android.demo.TestActivity"
             android:label="Android_demo" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +22,11 @@
             </intent-filter>
         </activity>
         
+        <activity android:name="com.android.demo.EventBusTwoActivity"></activity>
+        
     </application>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
